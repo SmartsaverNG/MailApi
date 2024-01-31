@@ -19,7 +19,7 @@ const home = async (req, res) => {
       !applicationMode ||
       !phoneNumber ||
       !message ||
-      !recipientEmai
+      !recipientEmail
     ) {
       res.status(400).json({
         status: false,
@@ -37,13 +37,13 @@ const home = async (req, res) => {
 
     await sendEmail(recipientEmail, templateData);
 
-    res.status(200).json({
+    return res.status(200).json({
       status: true,
       message: "Message sent!!",
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({
+    return res.status(500).json({
       status: false,
       message: "Internal server error!!",
     });
