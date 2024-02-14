@@ -9,5 +9,7 @@ mainRouter.get("/", (req, res) => {
   });
 });
 mainRouter.post("/send-mail", mainController.home);
+mainRouter.post("/send-contact-mail", mainController.contact);
+mainRouter.post("/send-application-mail", mainController.applicationForm);
 
 module.exports = mainRouter;

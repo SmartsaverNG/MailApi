@@ -51,6 +51,27 @@ exports.sendEmail = async (recipientEmail, templateData) => {
     }
 };
 
+exports.sendContactEmail = async (recipientEmail, templateData) => {
+    try {
+        const templatePath = path.join(__dirname, '../views/contact_template.ejs');
+
+        const emailTemplate = await ejs.renderFile(templatePath, templateData);
+
+        const mailOptions = {
+            from: `"no reply" ${process.env.EMAIL_USER}`,
+            to: recipientEmail,
+            subject: 'Incoming Message! 👋',
+            html: emailTemplate
+        };
+
+        await cicon_transporter.sendMail(mailOptions);
+        // console.log(`Verification email sent to ${recipientEmail}`);
+    } catch (error) {
+        console.error('Error sending email:', error);
+        throw new Error('An error occurred while sending the email');
+    }
+};
+
 exports.sendApplicationEmail = async (recipientEmail, templateData) => {
     try {
         const templatePath = path.join(__dirname, '../views/application_template.ejs');

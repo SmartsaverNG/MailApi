@@ -50,6 +50,48 @@ const home = async (req, res) => {
   }
 };
 
+exports.contact = async (req, res) => {
+  try {
+    const {
+      fullName,
+      email,
+      message,
+      recipientEmail,
+    } = req.body;
+
+    if (
+      !fullName ||
+      !email ||
+      !message ||
+      !recipientEmail
+    ) {
+      res.status(400).json({
+        status: false,
+        message: "Please fill all details",
+      });
+    }
+
+    const templateData = {
+      fullName,
+      email,
+      message,
+    };
+
+    await sendEmail(recipientEmail, templateData);
+
+    return res.status(200).json({
+      status: true,
+      message: "Message sent!!",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: false,
+      message: "Internal server error!!",
+    });
+  }
+};
+
 exports.applicationForm = async (req, res) => {
   try {
     console.log(req.body);
