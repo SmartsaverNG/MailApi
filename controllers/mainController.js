@@ -1,4 +1,4 @@
-const { sendEmail } = require("../services/email");
+const { sendEmail, sendContactEmail } = require("../services/email");
 
 exports.home = async (req, res) => {
   try {
@@ -77,7 +77,7 @@ exports.contact = async (req, res) => {
       message,
     };
 
-    await sendEmail(recipientEmail, templateData);
+    await sendContactEmail(recipientEmail, templateData);
 
     return res.status(200).json({
       status: true,
