@@ -21,7 +21,7 @@ exports.home = async (req, res) => {
       !message ||
       !recipientEmail
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         status: false,
         message: "Please fill all details",
       });
@@ -65,7 +65,7 @@ exports.contact = async (req, res) => {
       !message ||
       !recipientEmail
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         status: false,
         message: "Please fill all details",
       });
@@ -197,7 +197,7 @@ exports.applicationForm = async (req, res) => {
       !standard_testing_test_type ||
       !standard_testing_score
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         status: false,
         message: "Please fill all details",
       });
