@@ -1,6 +1,6 @@
 const { sendEmail } = require("../services/email");
 
-const home = async (req, res) => {
+exports.home = async (req, res) => {
   try {
     console.log(req.body);
 
@@ -267,5 +267,3 @@ exports.applicationForm = async (req, res) => {
     });
   }
 };
-
-module.exports = { home };
