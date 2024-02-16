@@ -100,7 +100,7 @@ exports.applicationForm = async (req, res) => {
       recipientEmail,
        academic_preference_study_destination,
       academic_preference_programme_type ,
-      academic_preference_prefferred_institute_firs,
+      academic_preference_prefferred_institute_first,
       academic_preference_prefferred_institute_second ,
       academic_preference_study_course_first ,
       academic_preference_study_course_second,
